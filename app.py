@@ -23,6 +23,11 @@ involvement_map = {
     'Medium': 1,
     'High': 2
 }
+Access_map = {
+    'Low': 0,
+    'Medium': 1,
+    'High': 2
+}
 
 # ====== 用户输入 ======
 Attendance = st.slider("Attendance", 60, 100, 75)
@@ -30,25 +35,32 @@ Hours_Studied = st.slider("Hours_Studied", 1, 44, 5)
 Previous_Scores = st.slider("Previous_Scores", 50, 100, 75)
 Tutoring_Sessions = st.slider("Tutoring_Sessions", 0, 8, 0)
 
-# 用户输入（显示文字）
+# user input
 Parental_Education_Level = st.selectbox(
     "Parental_Education_Level",
     ["High School", "College", "Postgraduate"]
 )
 education_value = education_map[Parental_Education_Level]
 
-# 用户输入（显示文字）
+# user input
 Parental_Involvement = st.selectbox(
     "Parental_Involvement_level",
     ["Low", "Medium", "High"]
 )
 involvement_value = involvement_map[Parental_Involvement]
 
-# ====== 构建输入 ======
+# user input
+Access_To_Resources = st.selectbox(
+    "Access_To_Resources",
+    ["Low", "Medium", "High"]
+)
+Access_value = Access_map[Access_To_Resources]
+
+
 
 import numpy as np
 input_data = np.array([[Attendance, Hours_Studied, Previous_Scores, 
-                        Tutoring_Sessions,education_value,involvement_value]])
+                        Tutoring_Sessions,education_value,involvement_value,Access_value]])
 
 # ====== 预测 ======
 
